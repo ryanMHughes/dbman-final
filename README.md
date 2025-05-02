@@ -19,7 +19,13 @@ Solution:
 	metadata will include information about what time each image was collected, what instrument type was used, the associated location on the lunar surface, and more. Users will be
 	able to interact with the database via a web application. 
 
-Preliminary Relations :
+ER Model : 
+
+
+
+
+
+ER to Table Conversion :
 
 	Instruments(instrument_id, instrument_type, instrument_desc)
 	Images(image_id, image_file_name, image_file_size, instrument_id)
@@ -29,11 +35,47 @@ Preliminary Relations :
 Functional Dependencies :
 
 
-	   
+	  
+3NF Decomposed Relations and Functional Dependencies :
 
-3NF Decomposed Relations :
 
-    
+Database Schema
+
+	 create Table Instruments (
+	 	int instrument_id,
+		char(30) instrument_type not null,
+		char(300) instrument_desc,
+		primary key(instrument_id)
+	);
+
+	create Table Images (
+	       int image_id,
+	       char(50) image_file_name,
+	       int image_file_size,
+	       int instrument_id,
+	       primary key(image_id),
+	       foreign key(instrument_id) references Instrument	       
+	);
+
+	create Table Target (
+	       int target_id,
+	       char(30) target_name,
+	       int target_lat not null,
+	       int target_long not null,
+	       int target_alt not null,
+	       primary key(target_id)
+	);
+
+	create Table MetaData (
+	       int product_id,
+	       datetime observation_time,
+	       datetime product_creation_time,
+	       int target_id,
+	       int image_id,
+	       primary key(product_id),
+	       foreign key(target_id) references Targets,
+	       foreign key(image_id) references Images
+	);
 
 Planned Queries :
 
