@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+
+<body>
+
+    {{> fragments/top_bar}}
+
+    <form action="/landing_site_search" method="get">
+        <input name="site_name" type="text" placeholder="Landing Site Name">
+        <button type="submit">Search</button>
+    </form>
+
+    {{> fragments/landing_site_container}}
+
+
+    {{> fragments/footer}}
+
+</body>
+</html>
+

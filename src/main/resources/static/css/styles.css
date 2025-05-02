@@ -213,3 +213,18 @@ nav a:hover {
 .link {
     margin-left: 16pt;
 }
+
+.featured-image {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.featured-image-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
