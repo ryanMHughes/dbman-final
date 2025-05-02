@@ -57,7 +57,7 @@ Database Schema
 	       foreign key (instrument_id) references Instruments	       
 	);
 
-	create Table Target (
+	create Table Targets (
 	       target_id int,
 	       target_name varchar(30) unique,
 	       target_lat int not null,
