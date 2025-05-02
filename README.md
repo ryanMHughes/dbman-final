@@ -42,39 +42,39 @@ Functional Dependencies :
 Database Schema
 
 	 create Table Instruments (
-	 	int instrument_id,
-		char(30) instrument_type not null,
-		char(300) instrument_desc,
-		primary key(instrument_id)
+	 	instrument_id int,
+		instrument_type varchar(30) not null,
+		instrument_desc varchar(300),
+		primary key (instrument_id)
 	);
 
 	create Table Images (
-	       int image_id,
-	       char(50) image_file_name,
-	       int image_file_size,
-	       int instrument_id,
-	       primary key(image_id),
-	       foreign key(instrument_id) references Instrument	       
+	       image_id int,
+	       image_file_name varchar(50),
+	       image_file_size int,
+	       instrument_id int,
+	       primary key (image_id),
+	       foreign key (instrument_id) references Instruments	       
 	);
 
 	create Table Target (
-	       int target_id,
-	       char(30) target_name,
-	       int target_lat not null,
-	       int target_long not null,
-	       int target_alt not null,
-	       primary key(target_id)
+	       target_id int,
+	       target_name varchar(30) unique,
+	       target_lat int not null,
+	       target_long int not null,
+	       target_alt int not null,
+	       primary key (target_id)
 	);
 
 	create Table MetaData (
-	       int product_id,
-	       datetime observation_time,
-	       datetime product_creation_time,
-	       int target_id,
-	       int image_id,
-	       primary key(product_id),
-	       foreign key(target_id) references Targets,
-	       foreign key(image_id) references Images
+	       product_id int,
+	       observation_time datetime not null,
+	       product_creation_time datetime,
+	       target_id int,
+	       image_id int,
+	       primary key (product_id),
+	       foreign key (target_id) references Targets,
+	       foreign key (image_id) references Images
 	);
 
 Planned Queries :
