@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{> fragments/html_header}}
+
 <head>
     <style>
         .clickable-row {
@@ -22,20 +23,19 @@
         }
     </style>
 </head>
+
+
 <body>
 
-    {{> fragments/top_bar}}
+   {{> fragments/top_bar}}
 
-    <form action="/landing_site_search" method="get">
-        <input name="site_name" type="text" placeholder="Landing Site Name">
-        <button type="submit">Search</button>
-    </form>
+   <h1>{{landingSite.name}}</h1>
+   <p>{{landingSite.description}}</p>
+   <p>Mission: {{landingSite.mission}}</p>
 
-    {{> fragments/landing_site_container}}
+   {{> fragments/image_container}}
 
-
-    {{> fragments/footer}}
+   {{> fragments/footer}}
 
 </body>
 </html>
-

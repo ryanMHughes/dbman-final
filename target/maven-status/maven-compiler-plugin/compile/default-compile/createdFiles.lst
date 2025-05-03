@@ -1,4 +1,5 @@
 uga/menik/cs4370/services/ImageService.class
+uga/menik/cs4370/services/BoundingBoxService.class
 uga/menik/cs4370/controllers/LandingSiteController.class
 uga/menik/cs4370/models/Image.class
 uga/menik/cs4370/App.class
@@ -6,6 +7,8 @@ uga/menik/cs4370/models/ExpandedImage.class
 uga/menik/cs4370/controllers/HomeController.class
 uga/menik/cs4370/services/FeaturedImageService.class
 uga/menik/cs4370/controllers/SearchController.class
+uga/menik/cs4370/services/LandingSiteService.class
+uga/menik/cs4370/models/LandingSite.class
 uga/menik/cs4370/controllers/FeaturedImageController.class
 uga/menik/cs4370/models/FeaturedImage.class
 uga/menik/cs4370/controllers/ImageController.class

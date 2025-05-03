@@ -227,8 +227,143 @@ CREATE TABLE BoundingBox (
 CREATE TABLE LandingSites (
     landing_site_name VARCHAR(40) NOT NULL PRIMARY KEY,
     description TEXT NOT NULL,
-    mission VARCHAR(20) NOT NULL,
+    mission TEXT NOT NULL,
     bounding_box_id INT NOT NULL,
     FOREIGN KEY (bounding_box_id) REFERENCES BoundingBox(bounding_box_id)
 );
 
+-- The following portion just updates the image table to add the bounding box id
+ALTER TABLE Images
+ADD COLUMN bounding_box_id INT,
+ADD FOREIGN KEY (bounding_box_id) REFERENCES BoundingBox(bounding_box_id);
+
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+SELECT
+    LEAST(upper_right_latitude, lower_right_latitude, lower_left_latitude, upper_left_latitude),
+    LEAST(upper_right_longitude, lower_right_longitude, lower_left_longitude, upper_left_longitude),
+    GREATEST(upper_right_latitude, lower_right_latitude, lower_left_latitude, upper_left_latitude),
+    GREATEST(upper_right_longitude, lower_right_longitude, lower_left_longitude, upper_left_longitude)
+FROM Images
+WHERE upper_right_latitude IS NOT NULL
+  AND lower_right_latitude IS NOT NULL
+  AND lower_left_latitude IS NOT NULL
+  AND upper_left_latitude IS NOT NULL
+  AND upper_right_longitude IS NOT NULL
+  AND lower_right_longitude IS NOT NULL
+  AND lower_left_longitude IS NOT NULL
+  AND upper_left_longitude IS NOT NULL;
+
+
+
+UPDATE Images i
+JOIN (
+    SELECT b.bounding_box_id, img.image_id
+    FROM BoundingBox b
+    JOIN (
+        SELECT image_id, ROW_NUMBER() OVER () AS rownum
+        FROM Images
+    ) img ON b.bounding_box_id = img.rownum
+) bbmap ON i.image_id = bbmap.image_id
+SET i.bounding_box_id = bbmap.bounding_box_id;
+
+-- The following inserts data into the landing sites table, collected from QuickMap. I made the descriptions.
+-- Nobile rim 1
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-85.89749, 31.64367, -84.94760, 43.20664);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Nobile Rim 1', 'Artemis III candidate site near Nobile crater, with high illumination and access to permanently shadowed regions.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- Nobile rim 2
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-84.40465, 54.46178, -83.50158, 63.02425);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Nobile Rim 2', 'Secondary Artemis III site near Nobile crater, offering diverse terrain and scientific potential.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- Mons Mouton
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-85.78834, 27.28799, -85.06330, 36.36658);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Mons Mouton', 'Large mountain massif at the lunar south pole, named for NASA engineer Melba Mouton, considered for Artemis III.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- de Gerlache Rim 2
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-88.65999, 282.52881, -87.78529, 310.60129);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('de Gerlache Rim 2', 'Candidate Artemis III site near de Gerlache crater rim, featuring permanently shadowed areas and water ice potential.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- Mons Mouton Plateau
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-85.75564, 15.49417, -82.84671, 46.61204);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Mons Mouton Plateau', 'Elevated plateau region adjacent to Mons Mouton, offering scientific access to diverse south polar geology.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- Slater Plain
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-87.62216, 116.56720, -86.70324, 134.99761);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Slater Plain', 'Relatively flat lunar south polar plain, potential Artemis III site with access to nearby shadowed areas.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- Peak Near Cabeus B
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-84.06005, 287.52647, -83.20950, 295.20011);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Peak Near Cabeus B', 'Artemis III candidate site near Cabeus B crater, offering illumination and proximity to water ice-rich shadowed zones.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+-- Haworth
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-87.39353, 325.01815, -86.11240, 347.63822);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Haworth', 'Region near Haworth crater, identified as a promising south polar Artemis III landing site for long-term exploration.', 'Artemis III Candidate Landing Region (2024)', @bbox_id);
+
+
+
+-- Endurance-A
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-87.39353, 325.01815, -86.11240, 347.63822);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Endurance-A Landing Site & Site H', 'Exploration site for the Endurance mission, focused on long-duration surface operations at the lunar south pole.', 'Endurance', @bbox_id);
+
+
+-- US Flag
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (20.19177, 30.77195, 20.19178, 30.77196);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Apollo 17 Landing Site', 'Apollo 17 landing site location where astronauts placed the US flag in Taurus-Littrow Valley.', 'Apollo 17', @bbox_id);
+
+-- Rover (apollo 17)
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (20.18973, 30.77680, 20.18974, 30.77681);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Apollo 17 Rover Ending Site', 'Apollo 17 lunar rover final parking spot near Taurus-Littrow Valley landing site.', 'Apollo 17', @bbox_id);
+
+-- US Flag
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-8.97295, 15.50072, -8.97296, 15.50073);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Apollo 16 Landing Site', 'Apollo 16 landing site where astronauts planted the US flag in the Descartes Highlands.', 'Apollo 16', @bbox_id);
+
+-- Rover (apollo 16)
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-8.97286, 15.50369, -8.97287, 15.50370);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Apollo 16 Rover Ending Site', 'Apollo 16 lunar rover location in the Descartes Highlands landing area.', 'Apollo 16', @bbox_id);
+
+-- Central station (apollo 14)
+INSERT INTO BoundingBox (min_lat, min_long, max_lat, max_long)
+VALUES (-3.64431, 342.52234, -3.64432, 342.52235);
+SET @bbox_id = LAST_INSERT_ID();
+INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
+VALUES ('Apollo 14 Central Station', 'Apollo 14 central station, part of the ALSEP scientific instrument package on the Moon.', 'Apollo 14', @bbox_id);

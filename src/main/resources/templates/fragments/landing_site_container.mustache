@@ -1,7 +1,14 @@
-{{#landingSites}}
-<div>
-    <h3>{{name}}</h3>
-    <p>{{description}}</p>
-</div>
-{{/landingSites}}
-
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mission</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#landingSites}}
+            {{> fragments/landing_site}}
+        {{/landingSites}}
+    </tbody>
+</table>
