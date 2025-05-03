@@ -86,8 +86,10 @@ Normalizing Tables :
 		dataset_data_id -> dataset_id
 		dataset_id -> image_id
 		featured_image_id -> image_id, description, date
+
 		user_id -> data_set_id
-		
+		metadata_id -> image_id
+		user_id, dataset_id -> image_id
 	      }
 
    Performing 3NF Synthesis
