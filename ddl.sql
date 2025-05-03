@@ -31,6 +31,7 @@ create Table FeaturedImages(
        FI_description varchar(300),
        date datetime,
        image_id int,
+       title varchar(100),
        primary key (featured_image_id),
        foreign key (image_id) references Images
 );
