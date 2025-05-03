@@ -47,7 +47,6 @@ public class HomeController {
 
     @GetMapping
     public ModelAndView webpage(@RequestParam(name = "error", required = false) String error) {
-        // See notes on ModelAndView in BookmarksController.java.
         ModelAndView mv = new ModelAndView("home_page");
 
         return mv;
