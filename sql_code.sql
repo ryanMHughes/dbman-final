@@ -367,3 +367,119 @@ VALUES (-3.64431, 342.52234, -3.64432, 342.52235);
 SET @bbox_id = LAST_INSERT_ID();
 INSERT INTO LandingSites (landing_site_name, description, mission, bounding_box_id)
 VALUES ('Apollo 14 Central Station', 'Apollo 14 central station, part of the ALSEP scientific instrument package on the Moon.', 'Apollo 14', @bbox_id);
+
+
+-- Now inserting featured images
+INSERT INTO FeaturedImages (title, description, feature_date, image_id)
+VALUES ("Trail of Discovery at Fra Mauro",
+  "Uncalibrated LROC NAC image of the Apollo 14 landing site and nearby Cone crater. The trail followed by the astronauts can clearly be discerned. Image width is 1.6 km [NASA/GSFC/Arizona State University].",
+  '2009-08-19', 
+  'M102264623RC');
+
+INSERT INTO FeaturedImages (title, description, feature_date, image_id)
+VALUES ("Necho Crater",
+  "Cracks form in the impact melt sheet on the floor of Necho Crater. Image width is 1.04 km [NASA/GSFC/Arizona State University].",
+  '2009-08-21', 
+  'M103703826LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES ("Ejecta sweeps the surface",
+"Ejecta of a fresh crater streams across the the lunar highlands south of Mare Tranquillitatis. Image width is 520 m [NASA/GSFC/Arizona State University].",
+"2009-10-11",
+'M108992058RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Apollo 14 S-IVB Impact Crater",
+"Crater (center of image) formed by impact of the Apollo 14 Saturn IVB booster. The booster was intentionally impacted into the lunar surface on February 4, 1971 to serve as an energy source to probe the interior structure of the Moon...",
+'2009-10-08',
+'M107049825RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("A Very Sinuous Rille",
+"Two oxbow bends along the length of a sinuous rille located on a mare-filled crater floor. The tight twists and turns of the rille suggest that a very turbulent lava flow formed this rille. Subarea of uncalibrated LROC NAC frame...",
+'2009-10-07',
+'M102672335LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Where Moscoviense meets the Highlands",
+"The edge of Mare Moscoviense. Image width is 1.4 km [NASA/GSFC/Arizona State University]",
+'2009-10-06',
+'M103531461LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Aratus CA",
+"Subset of uncalibrated LROC NAC frame M104447576R showing Vallis Lorca, one of four lobes that make up Aratus CA in western Mare Serenitatis near the Montes Apennius. The Sun is shining from the lower left, image width is 1924 meters...",
+'2009-10-02',
+'M104447576RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Surveyor 1 - America’s first soft lunar landing",
+"Surveyor 1 spacecraft sitting silently on Oceanus Procellarum, the first US spacecraft to land on another planet (June 2, 1966). The image was taken in the lunar afternoon such that the sun in low on the western horizon and the 3.3...",
+'2009-11-30',
+'M102443995LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Apollo 11: Second look",
+"LROC's second look at the Apollo 11 Landing Site [NASA/GSFC/Arizona State University]",
+'2009-11-29',
+'M104362199RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Rima Ariadaeus - A Linear Rille",
+"The linear rille Rima Ariadaeus is found on the nearside of the Moon, nestled between Mare Tranquillitatis and Mare Vaporum. Most linear rilles are believed to represent tectonic faulting and can be used to determine stratigraphic...",
+'2009-11-28',
+'M104419352RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Commissioning Sequences Pave the Way",
+"Several LROC NAC sequences were acquired looking across the illuminated limb to quantify scattered light. Not only were these excellent engineering test images but they also presented spectacular oblique views across the lunar surface...",
+'2009-11-21',
+'M106797147LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Milichius A                ",
+"The inner rim of Milichius A crater in Mare Insularum. Image width is approximately 6 km wide [NASA/GSFC/Arizona State University]",
+'2009-11-18',
+'M102365048LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Lunar South Pole - Out of the Shadows",
+"As the Moon heads into southern summer the region around the south pole is better seen by LROC. One of the many goals of the LRO mission is to improve our cartographic knowledge of the Moon. The location of the pole shown here (image...",
+'2009-11-17',
+'M102368083LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Timocharis Crater",
+"The ejecta blanket and rim of Timocharis crater in southeastern Mare Imbrium.  Image width is 7.2 km [NASA/GSFC/Arizona State University]",
+'2009-11-09',
+'M102242995RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Who slammed the barn door?",
+"LROC NAC frame M103259110L subset image of jitter distortions. Image width is approximately km [NASA/GSFC/Arizona State University",
+'2009-11-04',
+'M103259110LC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("First Look: Apollo 12 and Surveyor 3 ",
+"First look at Apollo 12 landing site, the Lunar Module descent stage, Experiment package (ALSEP) and Surveyor 3 spacecraft are all visible along with astronaut tracks (unmarked arrows). Image is 824 meters wide, north up...",
+'2009-11-03',
+'M104662862RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Uplift, Boulders of Tsiolkovskiy",
+"Boulders perched on the summit of the central peak of Tsiolkovskiy crater [NASA/GSFC/Arizona State University]",
+'2009-11-01',
+'M103668324RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("Recent impact!",
+"Very young impact crater in Balmer basin. The dark streamers are impact melt splashes thrown out during the crater formation, image 1302 meters wide [NASA/GSFC/Arizona State University]",
+'2009-08-31',
+'M104061987RC');
+
+INSERT INTO FeaturedImages(title, description, feature_date, image_id)
+VALUES("First LROC Stereo Results",
+"Synthetic perspective view looking south from the Apollo 16 landing area, topography is rendered naturally (no vertical exaggeration) [NASA/GSFC/Ohio State University]",
+'2009-08-25',
+'M102064759C');

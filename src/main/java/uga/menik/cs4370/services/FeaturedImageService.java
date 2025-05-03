@@ -30,8 +30,6 @@ public class FeaturedImageService {
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
-	    System.out.println("TRYING");
-
             while (rs.next()) {
                 images.add(new FeaturedImage(
                     rs.getString("title"),
@@ -40,7 +38,6 @@ public class FeaturedImageService {
                     rs.getString("description")
                 ));
             }
-	    System.out.println("DID IT");
 
         } catch (Exception e) {
             e.printStackTrace(); // replace with logger if needed
@@ -51,7 +48,7 @@ public class FeaturedImageService {
 
     public List<FeaturedImage> findByDate(String month, String day, String year) {
         String dateString = String.format("%s-%02d-%02d", year, Integer.parseInt(month), Integer.parseInt(day));
-        String sql = "SELECT title, date, url, description FROM featured_images WHERE date = ?";
+        String sql = "SELECT title, feature_date, image_id, description FROM FeaturedImages WHERE feature_date = ?";
         List<FeaturedImage> images = new ArrayList<>();
 
         try (Connection conn = dataSource.getConnection();
@@ -63,8 +60,8 @@ public class FeaturedImageService {
                 while (rs.next()) {
                     images.add(new FeaturedImage(
                         rs.getString("title"),
-                        rs.getString("date"),
-                        rs.getString("url"),
+                        rs.getString("feature_date"),
+                        rs.getString("image_id"),
                         rs.getString("description")
                     ));
                 }

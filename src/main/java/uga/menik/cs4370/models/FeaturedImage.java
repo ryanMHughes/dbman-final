@@ -2,20 +2,15 @@ package uga.menik.cs4370.models;
 
 public class FeaturedImage {
     private String title;
-    private String date;
-    private String url;
+    private String feature_date;
+    private String image_id;
     private String description;
 
-    public FeaturedImage(String title, String date, String url, String description) {
+    public FeaturedImage(String title, String feature_date, String image_id, String description) {
         this.title = title;
-        this.date = date;
-        this.url = url;
+        this.feature_date = feature_date;
+        this.image_id = image_id;
         this.description = description;
     }
-
-    public String getTitle() { return title; }
-    public String getDate() { return date; }
-    public String getUrl() { return url; }
-    public String getDescription() { return description; }
 }
 

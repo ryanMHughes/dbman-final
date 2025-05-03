@@ -1,13 +1,5 @@
-{{#featured_image}}
-<div>
-
-<div class="featured-image">
+<div class="featured-image" onclick="window.location.href='/{{image_id}}'">
     <h2>{{title}}</h2>
     <p><strong>Date:</strong> {{feature_date}}</p>
     <p>{{description}}</p>
 </div>
-{{/featured_image}}
-
-{{^featured_image}}
-	<p>No featured image found</p>
-{{/featured_image}}
