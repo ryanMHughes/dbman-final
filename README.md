@@ -1,15 +1,12 @@
 Team Member Names :
 
      Aiden Hammond
-     	   Contributions :
-	   	1)
-		2)
-		3)
+     	   Contributions : 
+	   	
      Ryan Hughes
      	  Contributions :
-	  	1)
-		2)
-		3) 
+	  	ER Model, prelim.pdf, db_design.pdf, ddl.sql, datasource.txt, readme.txt
+		Assisting with code implementation
 
 Technologies Used :
 
