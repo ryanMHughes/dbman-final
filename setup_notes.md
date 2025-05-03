@@ -1,3 +1,10 @@
+create the database:
+
+create database cs4370_final_project;
+
+use database:
+
+use database cs4370_final_project;
 
 
 move the csv to /var/lib/mysql-files/
