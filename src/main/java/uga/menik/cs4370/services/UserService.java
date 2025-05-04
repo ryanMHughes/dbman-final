@@ -13,9 +13,10 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+
 
 import uga.menik.cs4370.models.User;
 
@@ -33,7 +34,7 @@ public class UserService {
     // dataSource enables talking to the database.
     private final DataSource dataSource;
     // passwordEncoder is used for password security.
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final SCryptPasswordEncoder passwordEncoder;
     // This holds 
     private User loggedInUser = null;
 
@@ -44,7 +45,7 @@ public class UserService {
     @Autowired
     public UserService(DataSource dataSource) {
         this.dataSource = dataSource;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
 
     /**
@@ -104,44 +105,6 @@ public class UserService {
      */
     public User getLoggedInUser() {
         return loggedInUser;
-    }
-
-    public boolean isPostHeartedByUser(String postId) {
-        String sql = "SELECT 1 FROM heart WHERE postId = ? AND userId = ? LIMIT 1";
-    
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-    
-            stmt.setInt(1, Integer.parseInt(postId));
-            stmt.setInt(2, Integer.parseInt(loggedInUser.getUserId()));
-    
-            try (ResultSet rs = stmt.executeQuery()) {
-                return rs.next(); // returns true if a row exists
-            }
-    
-        } catch (Exception e) {
-            e.printStackTrace(); // replace with logger if needed
-            return false;
-        }
-    }
-
-    public boolean isPostBookmarkedByUser(String postId) {
-        String sql = "SELECT 1 FROM bookmark WHERE postId = ? AND userId = ? LIMIT 1";
-    
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-    
-            stmt.setInt(1, Integer.parseInt(postId));
-            stmt.setInt(2, Integer.parseInt(loggedInUser.getUserId()));
-    
-            try (ResultSet rs = stmt.executeQuery()) {
-                return rs.next(); // returns true if a row exists
-            }
-    
-        } catch (Exception e) {
-            e.printStackTrace(); // replace with logger if needed
-            return false;
-        }
     }
 
     /**

@@ -1,4 +1,9 @@
-/**hello*/
+/**
+Copyright (c) 2024 Sami Menik, PhD. All rights reserved.
+
+This is a project developed by Dr. Menik to give the students an opportunity to apply database concepts learned in the class in a real world project. Permission is granted to host a running version of this software and to use images or videos of this work solely for the purpose of demonstrating the work to potential employers. Any form of reproduction, distribution, or transmission of the software's source code, in part or whole, without the prior written consent of the copyright owner, is strictly prohibited.
+*/
+
 :root{
     --normal-text-color: #fbfbfb;
     --frame-color: #98b1c6;
@@ -6,7 +11,6 @@
     --action-item-color: #657786;
     --highlight-color: #1da1f2;
     background-color: #363738;
-    --background-color: #363738;
 }
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -14,28 +18,19 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: var(--background-color);
+    background-color: #363738;
 }
 nav {
     background: var(--box-color);
     padding: 16pt 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
+    text-align: left;
 }
-
-a {
-    color: #8CADA7;
-
-}
-
 nav a {
     text-decoration: none;
     margin-right: 16pt;
     color: var(--normal-text-color);;
     font-weight: bold;
     display: inline-block;
-    padding:auto;
 }
 nav a:hover {
     color: var(--highlight-color);
@@ -87,10 +82,8 @@ nav a:hover {
     margin-right: 0;
 }
 .content-center {
-    max-width: 700pt;
-    margin: auto auto;
-    vertical-align: middle;
-    align-items:center;
+    max-width: 480pt;
+    margin: 0 auto;
 }
 .container {
     max-width: 480pt;
@@ -227,18 +220,4 @@ nav a:hover {
     height: auto;
     display: block;
     margin: 10px 0;
-}
-.main-title-line {
-    font-size: 6rem;
-    font-weight: 900;
-    letter-spacing: 4px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-}
-
-.main-subtitle-line {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin-top: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
