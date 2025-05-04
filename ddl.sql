@@ -1,3 +1,16 @@
+create table if not exists user (
+    userId int auto_increment,
+    username varchar(255) not null,
+    password varchar(255) not null,
+    firstName varchar(255) not null,
+    lastName varchar(255) not null,
+    primary key (userId),
+    unique (username),
+    constraint userName_min_length check (char_length(trim(userName)) >= 2),
+    constraint firstName_min_length check (char_length(trim(firstName)) >= 2),
+    constraint lastName_min_length check (char_length(trim(lastName)) >= 2)
+);
+
 CREATE TABLE Images (
     image_id VARCHAR(40) NOT NULL PRIMARY KEY,
     url VARCHAR(100),
