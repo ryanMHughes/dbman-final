@@ -222,7 +222,7 @@ SET
 
 CREATE TABLE FeaturedImages (
     featured_image_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title varchar(40) NOT NULL,
+    title varchar(40) NOT NULL PRIMARY KEY,
     description TEXT NOT NULL,
     feature_date DATE NOT NULL,
     image_id VARCHAR(40) NOT NULL,

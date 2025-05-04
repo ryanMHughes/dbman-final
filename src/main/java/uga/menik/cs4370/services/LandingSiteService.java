@@ -72,7 +72,6 @@ public class LandingSiteService {
    }
 
    public LandingSite getLandingSiteByName(String name) {
-      System.out.println(name);
         String sql = "SELECT * FROM LandingSites WHERE landing_site_name = ?";
         try (var conn = dataSource.getConnection();
              var stmt = conn.prepareStatement(sql)) {
