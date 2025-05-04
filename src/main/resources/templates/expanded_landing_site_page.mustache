@@ -29,10 +29,11 @@
 
    {{> fragments/top_bar}}
 
-   <h1>{{landingSite.name}}</h1>
-   <p>{{landingSite.description}}</p>
-   <p>Mission: {{landingSite.mission}}</p>
-
+    <div class="centered-container" style="flex-direction: column;">
+        <div class="main-title-line">{{landingSite.name}}</div>
+        <div class="main-subtitle-line">{{landingSite.mission}}</div>
+        <h3>{{landingSite.description}}
+    </div>
    {{> fragments/image_container}}
 
    {{> fragments/footer}}
