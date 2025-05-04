@@ -9,13 +9,16 @@
     {{> fragments/no_content_message}}
 
     <div>
-    	<p> Search by date: </p>
+        <div class="centered-container">
+    	<h3> Search by date: </h3>
+        
         <form action="/featured_image_search" method="get">
             <input name="featured_image_month" class="short-input" type="text" placeholder="Month">
             <input name="featured_image_day" class="short-input" type="text" placeholder="Day">
             <input name="featured_image_year" class="short-input" type="text" placeholder="Year">
-            <button type="submit">Search</button>
+            <button type="submit" class="action-button">Search</button>
         </form>
+        </div>
     </div>
 
     {{> fragments/featured_image_container}}

@@ -114,122 +114,105 @@ public class ImageService {
             Double minSlewAngle, Double maxSlewAngle,
             String minStartTime, String maxStartTime,
             String minStopTime, String maxStopTime,
-            Double upperRightLatitude, Double upperRightLongitude,
-            Double upperLeftLatitude, Double upperLeftLongitude,
-            Double lowerLeftLatitude, Double lowerLeftLongitude,
-            Double lowerRightLatitude, Double lowerRightLongitude,
+            Double min_lat, Double max_lat,
+            Double min_lon, Double max_lon,
             Double minSubSolarAzimuth, Double maxSubSolarAzimuth,
             Double minSubSolarLatitude, Double maxSubSolarLatitude,
             Double minSubSolarLongitude, Double maxSubSolarLongitude
     ) {
         List<Image> images = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT image_id, Pds_volume_name, Orbit_number, Start_time, url FROM Images WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT image_id, Pds_volume_name, Orbit_number, Start_time, url FROM Images i JOIN BoundingBox b ON i.bounding_box_id = b.bounding_box_id WHERE 1=1");
         List<Object> params = new ArrayList<>();
 
         if (minEmissionAngle != null) {
-            sql.append(" AND Emission_angle >= ?");
+            sql.append(" AND i.Emission_angle >= ?");
             params.add(minEmissionAngle);
         }
         if (maxEmissionAngle != null) {
-            sql.append(" AND Emission_angle <= ?");
+            sql.append(" AND i.Emission_angle <= ?");
             params.add(maxEmissionAngle);
         }
         if (minIncidenceAngle != null) {
-            sql.append(" AND Incidence_angle >= ?");
+            sql.append(" AND i.Incidence_angle >= ?");
             params.add(minIncidenceAngle);
         }
         if (maxIncidenceAngle != null) {
-            sql.append(" AND Incidence_angle <= ?");
+            sql.append(" AND i.Incidence_angle <= ?");
             params.add(maxIncidenceAngle);
         }
         if (minOrbitNumber != null) {
-            sql.append(" AND Orbit_number >= ?");
+            sql.append(" AND i.Orbit_number >= ?");
             params.add(minOrbitNumber);
         }
         if (maxOrbitNumber != null) {
-            sql.append(" AND Orbit_number <= ?");
+            sql.append(" AND i.Orbit_number <= ?");
             params.add(maxOrbitNumber);
         }
         if (minSlewAngle != null) {
-            sql.append(" AND Slew_angle >= ?");
+            sql.append(" AND i.Slew_angle >= ?");
             params.add(minSlewAngle);
         }
         if (maxSlewAngle != null) {
-            sql.append(" AND Slew_angle <= ?");
+            sql.append(" AND i.Slew_angle <= ?");
             params.add(maxSlewAngle);
         }
         if (minStartTime != null && !minStartTime.isEmpty()) {
-            sql.append(" AND Start_time >= ?");
+            sql.append(" AND i.Start_time >= ?");
             params.add(minStartTime);
         }
         if (maxStartTime != null && !maxStartTime.isEmpty()) {
-            sql.append(" AND Start_time <= ?");
+            sql.append(" AND i.Start_time <= ?");
             params.add(maxStartTime);
         }
         if (minStopTime != null && !minStopTime.isEmpty()) {
-            sql.append(" AND Stop_time >= ?");
+            sql.append(" AND i.Stop_time >= ?");
             params.add(minStopTime);
         }
         if (maxStopTime != null && !maxStopTime.isEmpty()) {
-            sql.append(" AND Stop_time <= ?");
+            sql.append(" AND i.Stop_time <= ?");
             params.add(maxStopTime);
         }
-        if (upperRightLatitude != null) {
-            sql.append(" AND Upper_right_latitude <= ?");
-            params.add(upperRightLatitude);
-        }
-        if (upperRightLongitude != null) {
-            sql.append(" AND Upper_right_longitude <= ?");
-            params.add(upperRightLongitude);
-        }
-        if (upperLeftLatitude != null) {
-            sql.append(" AND Upper_left_latitude >= ?");
-            params.add(upperLeftLatitude);
-        }
-        if (upperLeftLongitude != null) {
-            sql.append(" AND Upper_left_longitude >= ?");
-            params.add(upperLeftLongitude);
-        }
-        if (lowerLeftLatitude != null) {
-            sql.append(" AND Lower_left_latitude >= ?");
-            params.add(lowerLeftLatitude);
-        }
-        if (lowerLeftLongitude != null) {
-            sql.append(" AND Lower_left_longitude >= ?");
-            params.add(lowerLeftLongitude);
-        }
-        if (lowerRightLatitude != null) {
-            sql.append(" AND Lower_right_latitude <= ?");
-            params.add(lowerRightLatitude);
-        }
-        if (lowerRightLongitude != null) {
-            sql.append(" AND Lower_right_longitude <= ?");
-            params.add(lowerRightLongitude);
-        }
         if (minSubSolarAzimuth != null) {
-            sql.append(" AND Sub_solar_azimuth >= ?");
+            sql.append(" AND i.Sub_solar_azimuth >= ?");
             params.add(minSubSolarAzimuth);
         }
         if (maxSubSolarAzimuth != null) {
-            sql.append(" AND Sub_solar_azimuth <= ?");
+            sql.append(" AND i.Sub_solar_azimuth <= ?");
             params.add(maxSubSolarAzimuth);
         }
         if (minSubSolarLatitude != null) {
-            sql.append(" AND Sub_solar_latitude >= ?");
+            sql.append(" AND i.Sub_solar_latitude >= ?");
             params.add(minSubSolarLatitude);
         }
-        if (maxSubSolarLatitude != null) {
-            sql.append(" AND Sub_solar_latitude <= ?");
+         if (maxSubSolarLatitude != null) {
+            sql.append(" AND i.Sub_solar_latitude <= ?");
             params.add(maxSubSolarLatitude);
-        }
-        if (minSubSolarLongitude != null) {
-            sql.append(" AND Sub_solar_longitude >= ?");
+         }
+         if (minSubSolarLongitude != null) {
+            sql.append(" AND i.Sub_solar_longitude >= ?");
             params.add(minSubSolarLongitude);
-        }
-        if (maxSubSolarLongitude != null) {
-            sql.append(" AND Sub_solar_longitude <= ?");
+         }
+         if (maxSubSolarLongitude != null) {
+            sql.append(" AND i.Sub_solar_longitude <= ?");
             params.add(maxSubSolarLongitude);
-        }
+         }
+         if (min_lat != null) {
+            sql.append(" AND b.min_lat >= ?");
+            params.add(min_lat);
+         }
+         if (max_lat != null) {
+            sql.append(" AND b.max_lat <= ?");
+            params.add(max_lat);
+         }
+         if (min_lon != null) {
+            sql.append(" AND b.min_lon >= ?");
+            params.add(min_lon);
+         }
+         if (max_lon != null) {
+            sql.append(" AND b.max_lon <= ?");
+            params.add(max_lon);
+         }
+
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql.toString())) {

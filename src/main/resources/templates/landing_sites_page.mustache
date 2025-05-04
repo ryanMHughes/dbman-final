@@ -26,10 +26,12 @@
 
     {{> fragments/top_bar}}
 
+    <div class="centered-container" style="margin-top: 20pt; margin-bottom: 20pt">
     <form action="/landing_site_search" method="get">
         <input name="site_name" type="text" placeholder="Landing Site Name">
-        <button type="submit">Search</button>
+        <button class="action-button" type="submit">Search</button>
     </form>
+    </div>
 
     {{> fragments/landing_site_container}}
 

@@ -34,14 +34,10 @@ public class SearchController {
             @RequestParam(required = false) String max_start_time,
             @RequestParam(required = false) String min_stop_time,
             @RequestParam(required = false) String max_stop_time,
-            @RequestParam(required = false) Double upper_right_latitude,
-            @RequestParam(required = false) Double upper_right_longitude,
-            @RequestParam(required = false) Double upper_left_latitude,
-            @RequestParam(required = false) Double upper_left_longitude,
-            @RequestParam(required = false) Double lower_left_latitude,
-            @RequestParam(required = false) Double lower_left_longitude,
-            @RequestParam(required = false) Double lower_right_latitude,
-            @RequestParam(required = false) Double lower_right_longitude,
+            @RequestParam(required = false) Double min_lat,
+            @RequestParam(required = false) Double max_lat,
+            @RequestParam(required = false) Double min_lon,
+            @RequestParam(required = false) Double max_lon,
             // advanced parameters (example)
             @RequestParam(required = false) Double min_sub_solar_azimuth,
             @RequestParam(required = false) Double max_sub_solar_azimuth,
@@ -53,14 +49,10 @@ public class SearchController {
         ModelAndView mv = new ModelAndView("search_page");
 
         // Add all input values back to template for repopulation
-        mv.addObject("upper_right_latitude", upper_right_latitude != null ? upper_right_latitude : "");
-        mv.addObject("upper_right_longitude", upper_right_longitude != null ? upper_right_longitude : "");
-        mv.addObject("upper_left_latitude", upper_left_latitude != null ? upper_left_latitude : "");
-        mv.addObject("upper_left_longitude", upper_left_longitude != null ? upper_left_longitude : "");
-        mv.addObject("lower_right_latitude", lower_right_latitude != null ? lower_right_latitude : "");
-        mv.addObject("lower_right_longitude", lower_right_longitude != null ? lower_right_longitude : "");
-        mv.addObject("lower_left_latitude", lower_left_latitude != null ? lower_left_latitude : "");
-        mv.addObject("lower_left_longitude", lower_left_longitude != null ? lower_left_longitude : "");
+        mv.addObject("min_lat", min_lat != null ? min_lat : "");
+        mv.addObject("max_lat", max_lat != null ? max_lat : "");
+        mv.addObject("min_lon", min_lon != null ? min_lon : "");
+        mv.addObject("max_lon", max_lon != null ? max_lon : "");
 
         mv.addObject("min_start_time", min_start_time != null ? min_start_time : "");
         mv.addObject("max_start_time", max_start_time != null ? max_start_time : "");
@@ -90,10 +82,8 @@ public class SearchController {
                 min_slew_angle, max_slew_angle,
                 min_start_time, max_start_time,
                 min_stop_time, max_stop_time,
-                upper_right_latitude, upper_right_longitude,
-                upper_left_latitude, upper_left_longitude,
-                lower_left_latitude, lower_left_longitude,
-                lower_right_latitude, lower_right_longitude,
+                min_lat, max_lat,
+                min_lon, max_lon,
                 min_sub_solar_azimuth, max_sub_solar_azimuth,
                 min_sub_solar_latitude, max_sub_solar_latitude,
                 min_sub_solar_longitude, max_sub_solar_longitude

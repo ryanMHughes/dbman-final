@@ -60,12 +60,13 @@ nav a:hover {
 }
 .action-button {
     /* background-color: #657786; */
-    background-color: var(--box-color);;
-    color: var(--action-item-color);
+    background-color: var(--frame-color);;
+    color: var(--normal-text-color);
     border: 1.2pt solid var(--action-item-color);
-    border-radius: 16pt;
-    padding: 8pt 16pt;
+    border-radius: 8pt;
+    padding: 2pt 8pt;
     cursor: pointer;
+    
 }
 .action-button:hover {
     color: var(--highlight-color);
@@ -91,6 +92,13 @@ nav a:hover {
     margin: auto auto;
     vertical-align: middle;
     align-items:center;
+}
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
 }
 .container {
     max-width: 480pt;

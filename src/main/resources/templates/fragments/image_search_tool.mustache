@@ -1,45 +1,21 @@
 <div class="img-search-container">
     <section>
-        <h3>Bounding Box (Latitude / Longitude)</h3>
-        <form action="/search" method="get">
-            <table>
-                <tr>
-                    <th>Corner</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                </tr>
-                <tr>
-                    <td>Upper Right</td>
-                    <td><input name="upper_right_latitude" type="number" step="0.0001" value="{{upper_right_latitude}}"></td>
-                    <td><input name="upper_right_longitude" type="number" step="0.0001" value="{{upper_right_longitude}}"></td>
-                </tr>
-                <tr>
-                    <td>Lower Right</td>
-                    <td><input name="lower_right_latitude" type="number" step="0.0001" value="{{lower_right_latitude}}"></td>
-                    <td><input name="lower_right_longitude" type="number" step="0.0001" value="{{lower_right_longitude}}"></td>
-                </tr>
-                <tr>
-                    <td>Lower Left</td>
-                    <td><input name="lower_left_latitude" type="number" step="0.0001" value="{{lower_left_latitude}}"></td>
-                    <td><input name="lower_left_longitude" type="number" step="0.0001" value="{{lower_left_longitude}}"></td>
-                </tr>
-                <tr>
-                    <td>Upper Left</td>
-                    <td><input name="upper_left_latitude" type="number" step="0.0001" value="{{upper_left_latitude}}"></td>
-                    <td><input name="upper_left_longitude" type="number" step="0.0001" value="{{upper_left_longitude}}"></td>
-                </tr>
-            </table>
-        </form>
-    </section>
-
-    <section>
-        <h3>Main Parameters</h3>
         <form action="/search" method="get">
             <table>
                 <tr>
                     <th>Parameter</th>
                     <th>Min</th>
                     <th>Max</th>
+                </tr>
+                <tr>
+                    <td>Lat</td>
+                    <td><input name="min_lat" type="number" step="0.0001" value="{{min_lat}}"></td>
+                    <td><input name="max_lat" type="number" step="0.0001" value="{{max_lat}}"></td>
+                </tr>
+                <tr>
+                    <td>Lon</td>
+                    <td><input name="min_lon" type="number" step="0.0001" value="{{min_lon}}"></td>
+                    <td><input name="max_lon" type="number" step="0.0001" value="{{max_lon}}"></td>
                 </tr>
                 <tr>
                     <td>Start Time</td>
@@ -88,26 +64,9 @@
                 </tr>
             </table>
 
-            <!-- Advanced Section Toggle -->
-            <details>
-                <summary>Advanced Parameters</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Min</th>
-                        <th>Max</th>
-                    </tr>
-                    {{#advancedParameters}}
-                    <tr>
-                        <td>{{name}}</td>
-                        <td><input name="min_{{id}}" type="number" step="0.1" value="{{min_{{id}}}}"></td>
-                        <td><input name="max_{{id}}" type="number" step="0.1" value="{{max_{{id}}}}"></td>
-                    </tr>
-                    {{/advancedParameters}}
-                </table>
-            </details>
-
-            <button type="submit">Search</button>
+            <div class="centered-container" style="flex-direction: column; margin-bottom: 50pt;">
+               <button type="submit" class="center-button">Search</button>
+            </div>
         </form>
     </section>
 </div>
