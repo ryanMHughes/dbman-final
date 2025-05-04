@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<head>
+    <style>
+        .clickable-row {
+            cursor: pointer;
+        }
+        .clickable-row:hover {
+            background-color: #f0f0f0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    {{> fragments/top_bar}}
+
+    <div class="centered-container" style="margin-top: 20pt; margin-bottom: 20pt">
+    <form action="/landing_site_search" method="get">
+        <input name="site_name" type="text" placeholder="Landing Site Name">
+        <button class="action-button" type="submit">Search</button>
+    </form>
+    </div>
+
+    {{> fragments/landing_site_container}}
+
+
+    {{> fragments/footer}}
+
+</body>
+</html>
+

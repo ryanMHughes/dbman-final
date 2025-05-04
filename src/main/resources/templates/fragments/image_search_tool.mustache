@@ -1,0 +1,72 @@
+<div class="img-search-container">
+    <section>
+        <form action="/search" method="get">
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                </tr>
+                <tr>
+                    <td>Lat</td>
+                    <td><input name="min_lat" type="number" step="0.0001" value="{{min_lat}}"></td>
+                    <td><input name="max_lat" type="number" step="0.0001" value="{{max_lat}}"></td>
+                </tr>
+                <tr>
+                    <td>Lon</td>
+                    <td><input name="min_lon" type="number" step="0.0001" value="{{min_lon}}"></td>
+                    <td><input name="max_lon" type="number" step="0.0001" value="{{max_lon}}"></td>
+                </tr>
+                <tr>
+                    <td>Start Time</td>
+                    <td><input name="min_start_time" type="datetime-local" value="{{min_start_time}}"></td>
+                    <td><input name="max_start_time" type="datetime-local" value="{{max_start_time}}"></td>
+                </tr>
+                <tr>
+                    <td>Stop Time</td>
+                    <td><input name="min_stop_time" type="datetime-local" value="{{min_stop_time}}"></td>
+                    <td><input name="max_stop_time" type="datetime-local" value="{{max_stop_time}}"></td>
+                </tr>
+                <tr>
+                    <td>Sub Solar Azimuth</td>
+                    <td><input name="min_sub_solar_azimuth" type="number" step="0.1" value="{{min_sub_solar_azimuth}}"></td>
+                    <td><input name="max_sub_solar_azimuth" type="number" step="0.1" value="{{max_sub_solar_azimuth}}"></td>
+                </tr>
+                <tr>
+                    <td>Sub Solar Latitude</td>
+                    <td><input name="min_sub_solar_latitude" type="number" step="0.0001" value="{{min_sub_solar_latitude}}"></td>
+                    <td><input name="max_sub_solar_latitude" type="number" step="0.0001" value="{{max_sub_solar_latitude}}"></td>
+                </tr>
+                <tr>
+                    <td>Sub Solar Longitude</td>
+                    <td><input name="min_sub_solar_longitude" type="number" step="0.0001" value="{{min_sub_solar_longitude}}"></td>
+                    <td><input name="max_sub_solar_longitude" type="number" step="0.0001" value="{{max_sub_solar_longitude}}"></td>
+                </tr>
+                <tr>
+                    <td>Emission Angle</td>
+                    <td><input name="min_emission_angle" type="number" step="0.1" value="{{min_emission_angle}}"></td>
+                    <td><input name="max_emission_angle" type="number" step="0.1" value="{{max_emission_angle}}"></td>
+                </tr>
+                <tr>
+                    <td>Incidence Angle</td>
+                    <td><input name="min_incidence_angle" type="number" step="0.1" value="{{min_incidence_angle}}"></td>
+                    <td><input name="max_incidence_angle" type="number" step="0.1" value="{{max_incidence_angle}}"></td>
+                </tr>
+                <tr>
+                    <td>Orbit Number</td>
+                    <td><input name="min_orbit_number" type="number" value="{{min_orbit_number}}"></td>
+                    <td><input name="max_orbit_number" type="number" value="{{max_orbit_number}}"></td>
+                </tr>
+                <tr>
+                    <td>Slew Angle</td>
+                    <td><input name="min_slew_angle" type="number" step="0.1" value="{{min_slew_angle}}"></td>
+                    <td><input name="max_slew_angle" type="number" step="0.1" value="{{max_slew_angle}}"></td>
+                </tr>
+            </table>
+
+            <div class="centered-container" style="flex-direction: column; margin-bottom: 50pt;">
+               <button type="submit" class="center-button">Search</button>
+            </div>
+        </form>
+    </section>
+</div>

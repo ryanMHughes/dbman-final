@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+
+<head>
+    <style>
+    .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        .clickable-row {
+            cursor: pointer;
+        }
+        .clickable-row:hover {
+            background-color: #f0f0f0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .center-button {
+        padding: 15px 70px;
+        font-size: 18px;
+        background-color: rgba(251, 251, 251, 0.85);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+        margin-top: 50px;
+    }
+
+    .center-button:hover {
+        background-color: rgba(251, 251, 251, 1);
+    }
+    </style>
+</head>
+
+
+<body>
+
+    {{> fragments/top_bar}}
+
+    <div class="centered-container" style="flex-direction: column;">
+        <div class="main-title-line">IMAGE SEARCH</div>
+        <div class="main-subtitle-line">Use the below tools to enter search queries</div>
+    </div>
+    
+    {{> fragments/image_search_tool}}
+
+    {{> fragments/image_container}}
+
+    {{> fragments/footer}}
+
+</body>
+</html>

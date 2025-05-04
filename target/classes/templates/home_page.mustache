@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/css/style.css">
+{{> fragments/html_header}}
+
+<style>
+    .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+
+    .center-button {
+        padding: 15px 70px;
+        font-size: 18px;
+        background-color: rgba(251, 251, 251, 0.85);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+        margin-top: 50px;
+    }
+
+    .center-button:hover {
+        background-color: rgba(251, 251, 251, 1);
+    }
+
+    body {
+         background: url('/home/moon-bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
+
+<body>
+
+    {{> fragments/top_bar}}
+
+    <div class="centered-container" style="flex-direction: column;">
+        <div class="main-title-line">LROC</div>
+        <div class="main-subtitle-line">IMAGE SEARCH</div>
+        <a href="/search" class="center-button">Search</a>
+    </div>
+
+
+</body>
+</html>
+

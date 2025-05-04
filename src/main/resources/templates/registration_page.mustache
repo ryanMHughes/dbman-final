@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+
+<link rel="stylesheet" href="/css/style.css">
+
+<style>
+
+    .register-container {
+        max-width: 400px;
+        margin: 60px auto;
+        background-color: ##949B96;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 250px;
+        margin-bottom: 30px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    button.action-button {
+        width: 100%;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    button.action-button:hover {
+        background-color: #005bb5;
+    }
+
+    .link {
+        display: inline-block;
+        margin-top: 15px;
+        color: #0073e6;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+    .error-message {
+        color: red;
+        margin-bottom: 15px;
+    }
+
+    .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+</style>
+
+<body>
+
+    <div class="register-container">
+        <img src="/logos/logo3.png" class="logo" alt="LROC Image Search Logo" style="width: 120px; height: auto; padding: auto;">
+        <div class="centered-container" style="flex-direction: column;">
+            <div class="main-title-line">LROC</div>
+            <div class="main-subtitle-line">IMAGE SEARCH</div>
+        </div>
+
+        {{> fragments/error_message}}
+
+        <form method="post" action="/register">
+            <input name="firstName" class="short-input full" type="text" placeholder="First Name" required>
+            <input name="lastName" class="short-input full" type="text" placeholder="Last Name" required>
+            <input name="username" class="short-input full" type="text" placeholder="Username" required>
+            <input name="password" class="short-input full" type="password" placeholder="Password" required>
+            <input name="passwordRepeat" class="short-input full" type="password" placeholder="Password Repeat" required>
+            <button type="submit" class="action-button">Register</button>
+        </form>
+
+        <a class="link" href="/login"> Go back to login?</a>
+    </div>
+
+    {{> fragments/footer}}
+
+</body>
+</html>
