@@ -1,26 +1,100 @@
-<!--
-Copyright (c) 2024 Sami Menik, PhD. All rights reserved.
-
-This is a project developed by Dr. Menik to give the students an opportunity to apply database concepts learned in the class in a real world project. Permission is granted to host a running version of this software and to use images or videos of this work solely for the purpose of demonstrating the work to potential employers. Any form of reproduction, distribution, or transmission of the software's source code, in part or whole, without the prior written consent of the copyright owner, is strictly prohibited.
--->
 <!DOCTYPE html>
 <html lang="en">
 {{> fragments/html_header}}
 
+<link rel="stylesheet" href="/css/style.css">
+
+<style>
+
+    .login-container {
+        max-width: 400px;
+        margin: 60px auto;
+        background-color: ##949B96;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 250px;
+        margin-bottom: 30px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    button.action-button {
+        width: 100%;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    button.action-button:hover {
+        background-color: #005bb5;
+    }
+
+    .link {
+        display: inline-block;
+        margin-top: 15px;
+        color: #0073e6;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+    .error-message {
+        color: red;
+        margin-bottom: 15px;
+    }
+
+    .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+</style>
+
 <body>
 
-    <div class="container center-align narrow">
+    <div class="login-container">
+        <img src="/logos/logo3.png" class="logo" alt="LROC Image Search Logo" style="width: 120px; height: auto; padding: auto;">
+        <div class="centered-container" style="flex-direction: column;">
+            <div class="main-title-line">LROC</div>
+            <div class="main-subtitle-line">IMAGE SEARCH</div>
+        </div>
+
         {{> fragments/error_message}}
+
         <form method="post" action="/login">
-            <input name="username" class="short-input full" type="text" placeholder="Username">
-            <input name="password" class="short-input full" type="password" placeholder="Password">
+            <input name="username" type="text" placeholder="Username" required>
+            <input name="password" type="password" placeholder="Password" required>
             <button type="submit" class="action-button">Login</button>
-            <a class="link" href="/register">Register</a>
         </form>
+
+        <a class="link" href="/register">Don’t have an account? Register</a>
     </div>
 
     {{> fragments/footer}}
 
 </body>
-
 </html>
