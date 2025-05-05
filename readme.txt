@@ -14,13 +14,18 @@ Team Member Names :
 		demo video, working code for web app, readme.txt, group member contribution
 		form
 
-Technologies Used : Java, Spring Boot, JDBC Connection, Docker mySQL, Maven
+Technologies Used : Java, Spring Boot, JDBC Connection, Docker, mySQL, Maven
 
-Database Name :
 
-Database Username :
+spring.datasource.url=jdbc:mysql://localhost:33306/cs4370_final_project
+spring.datasource.username=root
+spring.datasource.password=mysqlpass
 
-Database Password :
+Database Name : cs4370_final_project
+
+Database Username : root
+
+Database Password : mysqlpass
 
 Test Username/Password Pairs
 
@@ -35,3 +40,4 @@ Test Username/Password Pairs
      3)
 	User:
 	Pswd:
+
