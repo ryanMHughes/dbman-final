@@ -2,11 +2,11 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>uga.menik.cs4370</groupId>
-  <artifactId>dr-meniks-web-starter</artifactId>
+  <groupId>uga.lroc.cs4370</groupId>
+  <artifactId>lroc-search-tool</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>dr-meniks-web-starter</name>
+  <name>lroc-search-tool</name>
   <url>http://maven.apache.org</url>
   <parent>
     <groupId>org.springframework.boot</groupId>
