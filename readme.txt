@@ -41,3 +41,12 @@ Test Username/Password Pairs
 	User:
 	Pswd:
 
+
+
+For the grader:
+
+You will want to move the data.csv with you to the docker or wherever you're running the database!!
+The data.sql file reads from the csv -- PLEASE do this. The site really does need a lot of data - this is a relatively small amount of data for this site!
+The data.sql assumes that the data.csv file is at '/var/lib/mysql-files/data.csv'
+IF YOU ARE STORING IT SOMEWHERE ELSE PLEASE UPDATE THE PATH!! It is at the top of the data.sql file.
+Thank you & sorry for the hassle!
