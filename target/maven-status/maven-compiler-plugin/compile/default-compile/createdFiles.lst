@@ -1,7 +1,9 @@
+uga/menik/cs4370/controllers/ProfileController.class
 uga/menik/cs4370/services/ImageService.class
 uga/menik/cs4370/models/Image.class
 uga/menik/cs4370/App.class
 uga/menik/cs4370/components/AuthInterceptor.class
+uga/menik/cs4370/services/DatasetService.class
 uga/menik/cs4370/controllers/HomeController.class
 uga/menik/cs4370/services/FeaturedImageService.class
 uga/menik/cs4370/config/WebConfig.class

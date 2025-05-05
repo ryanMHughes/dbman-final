@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uga.menik.cs4370.models.ExpandedImage;
 import uga.menik.cs4370.models.Image;
+import uga.menik.cs4370.services.DatasetService;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -14,10 +15,12 @@ import java.util.List;
 @Service
 public class ImageService {
 
-    private final DataSource dataSource;
+   private final DataSource dataSource;
+   private final DatasetService datasetService;
 
     @Autowired
-    public ImageService(DataSource dataSource) {
+    public ImageService(DataSource dataSource, DatasetService datasetService) {
+        this.datasetService = datasetService;
         this.dataSource = dataSource;
     }
 
@@ -121,7 +124,8 @@ public class ImageService {
             Double minSubSolarLongitude, Double maxSubSolarLongitude
     ) {
         List<Image> images = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT image_id, Pds_volume_name, Orbit_number, Start_time, url FROM Images i JOIN BoundingBox b ON i.bounding_box_id = b.bounding_box_id WHERE 1=1");
+        //StringBuilder sql = new StringBuilder("SELECT image_id, Pds_volume_name, Orbit_number, Start_time, url FROM Images i JOIN BoundingBox b ON i.bounding_box_id = b.bounding_box_id WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT i.image_id, i.Pds_volume_name, i.Orbit_number, i.Start_time, i.url, CASE WHEN d.image_id IS NULL THEN TRUE ELSE FALSE END AS addable FROM Images i JOIN BoundingBox b ON i.bounding_box_id = b.bounding_box_id LEFT JOIN Dataset d ON i.image_id = d.image_id WHERE 1=1");
         List<Object> params = new ArrayList<>();
 
         if (minEmissionAngle != null) {
@@ -231,7 +235,8 @@ public class ImageService {
                            rs.getString("Pds_volume_name"),
                            rs.getInt("Orbit_number"),
                            rs.getString("Start_time"),
-                           rs.getString("url")
+                           rs.getString("url"),
+                           rs.getBoolean("addable")
                   );
                   images.add(img);
                 }

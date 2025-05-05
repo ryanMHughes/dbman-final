@@ -1,9 +1,10 @@
 Source of Data :
 
-       We used the LRO QuickMap interface, located at https://quickmap.lroc.asu.edu/?prjExtent=-1739780%2C-1737400%2C1739780%2C1737400&shadowsType=all&layers=NrBsFYBoAZIRnpEBmZcAsjYIHYFcAbAyAbwF8BdC0yioA&proj=10
+       We used the LRO QuickMap interface, located at https://quickmap.lroc.asu.edu, as well as the PDS archive for LROC data, located at https://pds.lroc.asu.edu/data/LRO-L-LROC-3-CDR-V1.0/
 
-       The site is a public source for Lunar map data, as well as other celestial bodies such as Mars, Mercury, and Venus.
+       QuickMap is a source for Lunar map data, as well as other celestial bodies such as Mars, Mercury, and Venus.
+
+       The linked PDS archive is an archive specifically for the first data dump from LROC back around ~2009.
 
        Data for specific landing sites was obtained from this interface by navigating to the 'LRO Satellite' layer and then importing data pertaining to landing sites. This information includes 'url', 'landing_site_name', and other attributes. Bounding box information is alos listed under each landing site on this interface, and was ported over. The data was webscraped over to /var/lib for use in the database.
-
 

@@ -74,4 +74,3 @@ public class FeaturedImageService {
         return images;
     }
 }
-

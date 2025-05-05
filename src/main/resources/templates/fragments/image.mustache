@@ -1,7 +1,19 @@
 <tr class="clickable-row" onclick="window.location.href='/{{image_id}}'">
-    <td>{{image_id}}</td>
-    <td>{{Pds_volume_name}}</td>
-    <td>{{Orbit_number}}</td>
-    <td>{{Start_time}}</td>
-    <td><a href="{{url}}" target="_blank">{{url}}</a></td>
+   <td>{{image_id}}</td>
+   <td>{{Pds_volume_name}}</td>
+   <td>{{Orbit_number}}</td>
+   <td>{{Start_time}}</td>
+   <td><a href="{{url}}" target="_blank">{{url}}</a></td>
+   <td>
+        {{#addable}}
+            <button style="background-color: green; color: white;" onclick="event.stopPropagation(); window.location.href='/dataset/add/{{image_id}}'">
+               Add
+            </button>
+        {{/addable}}
+        {{^addable}}
+            <button style="background-color: red; color: white;" onclick="event.stopPropagation();">
+               Remove
+            </button>
+        {{/addable}}
+    </td>
 </tr>

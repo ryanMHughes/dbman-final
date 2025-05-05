@@ -13,7 +13,7 @@ public class User {
     /**
      * Unique identifier for the user.
      */
-    private final String userId;
+    public final String userId;
 
     /**
      * First name of the user.

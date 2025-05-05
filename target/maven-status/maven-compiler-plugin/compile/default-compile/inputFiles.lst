@@ -2,6 +2,7 @@
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/controllers/FeaturedImageController.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/controllers/HomeController.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/controllers/LandingSiteController.java
+/Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/controllers/ProfileController.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/services/ImageService.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/models/Image.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/services/UserService.java
@@ -18,5 +19,6 @@
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/models/ExpandedFeaturedImage.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/controllers/RegistrationController.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/services/BoundingBoxService.java
+/Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/services/DatasetService.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/services/LandingSiteService.java
 /Users/aiden/School/CS/DatabaseManagement/final-project/dbman-final/src/main/java/uga/menik/cs4370/controllers/ImageController.java
