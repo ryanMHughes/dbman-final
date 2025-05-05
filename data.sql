@@ -302,18 +302,6 @@ VALUES("Apollo 14 S-IVB Impact Crater",
 'M107049825RC');
 
 INSERT INTO FeaturedImages(title, description, feature_date, image_id)
-VALUES("A Very Sinuous Rille",
-"Two oxbow bends along the length of a sinuous rille located on a mare-filled crater floor. The tight twists and turns of the rille suggest that a very turbulent lava flow formed this rille. Subarea of uncalibrated LROC NAC frame...",
-'2009-10-07',
-'M102672335LC');
-
-INSERT INTO FeaturedImages(title, description, feature_date, image_id)
-VALUES("Where Moscoviense meets the Highlands",
-"The edge of Mare Moscoviense. Image width is 1.4 km [NASA/GSFC/Arizona State University]",
-'2009-10-06',
-'M103531461LC');
-
-INSERT INTO FeaturedImages(title, description, feature_date, image_id)
 VALUES("America’s first soft lunar landing",
 "Surveyor 1 spacecraft sitting silently on Oceanus Procellarum, the first US spacecraft to land on another planet (June 2, 1966). The image was taken in the lunar afternoon such that the sun in low on the western horizon and the 3.3...",
 '2009-11-30',
