@@ -209,11 +209,11 @@ public class ImageService {
             params.add(max_lat);
          }
          if (min_lon != null) {
-            sql.append(" AND b.min_lon >= ?");
+            sql.append(" AND b.min_long >= ?");
             params.add(min_lon);
          }
          if (max_lon != null) {
-            sql.append(" AND b.max_lon <= ?");
+            sql.append(" AND b.max_long <= ?");
             params.add(max_lon);
          }
 

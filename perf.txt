@@ -1,0 +1,94 @@
+
+CREATE INDEX idx_boundingbox_latlong ON BoundingBox(min_lat, max_lat, min_long, max_long);
+-- This was meant to speed up both bounding box searches for images and for images that are 
+-- at landing sites.
+
+For example, the query:
+SELECT DISTINCT i.*
+            FROM BoundingBox target
+            JOIN BoundingBox b ON
+                b.bounding_box_id != target.bounding_box_id
+                AND b.min_lat <= target.max_lat
+                AND b.max_lat >= target.min_lat
+                AND b.min_long <= target.max_long
+                AND b.max_long >= target.min_long
+            JOIN Images i ON i.bounding_box_id = b.bounding_box_id
+            WHERE target.bounding_box_id = 330878;
+
+which might be called from getImagesIntersectingLandingSite in the BoundingBoxService takes 
+0.17 seconds to get 2118 rows BEFORE indexing.
+
+AFTER indexing it takes only 0.04 seconds.
+
+The other query affected is 
+
+SELECT i.image_id, 
+       i.Pds_volume_name, 
+       i.Orbit_number, 
+       i.Start_time, 
+       i.url, 
+       CASE WHEN d.image_id IS NULL THEN TRUE ELSE FALSE END AS addable 
+       FROM Images i 
+       JOIN BoundingBox b ON i.bounding_box_id = b.bounding_box_id 
+       LEFT JOIN Dataset d ON i.image_id = d.image_id WHERE 1=1
+       AND b.min_lat >= 20.01
+       AND b.max_lat <= 101.00
+       AND b.min_long >= 100.00
+       AND b.max_long <= 180.00;
+
+which might be called by searchImages in the ImageService and takes 0.08 seconds to 
+get 5165 rows BEFORE indexing.
+
+AFTER indexing it only takes 0.04 seconds.
+
+####################################################################################
+
+The second index used is:
+
+CREATE INDEX idx_images_filtering ON Images(
+    Start_time,
+    Stop_time,
+    Emission_angle,
+    Incidence_angle,
+    Orbit_number,
+    Slew_angle,
+    Sub_solar_azimuth,
+    Sub_solar_latitude,
+    Sub_solar_longitude
+);
+
+This is specifically for  the giant call that is possible in searchImages where everything can be searched.
+An example query that could happen is:
+
+
+SELECT i.image_id, 
+       i.Pds_volume_name, 
+       i.Orbit_number, 
+       i.Start_time, 
+       i.url, 
+       CASE WHEN d.image_id IS NULL THEN TRUE ELSE FALSE END AS addable 
+FROM Images i 
+JOIN BoundingBox b ON i.bounding_box_id = b.bounding_box_id 
+LEFT JOIN Dataset d ON i.image_id = d.image_id 
+WHERE 1=1
+  AND i.Start_time >= "2009-10-21"
+  AND i.Stop_time >= "2009-10-21"
+  AND i.Emission_angle >= 0.0
+  AND i.Incidence_angle >= 0.0
+  AND i.Orbit_number >= 0
+  AND i.Slew_angle >= -90.0
+  AND i.Sub_solar_azimuth >= 0.0
+  AND i.Sub_solar_latitude >= -90.0
+  AND i.Sub_solar_longitude >= -180.0
+  AND i.Start_time <= "2009-11-10"
+  AND i.Stop_time <= "2009-11-10"
+  AND i.Emission_angle <= 180.0
+  AND i.Incidence_angle <= 180.0
+  AND i.Orbit_number <= 2000
+  AND i.Slew_angle <= 90.0
+  AND i.Sub_solar_azimuth <= 360.0 
+  AND i.Sub_solar_latitude <= 90.0
+  AND i.Sub_solar_longitude <= 180.0;
+
+which returns 5149 rows in 0.06 seconds BEFORE indexing.
+AFTER indexing it returns 5149 rows in 0.03 seconds.

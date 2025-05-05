@@ -390,3 +390,18 @@ VALUES("First LROC Stereo Results",
 "Synthetic perspective view looking south from the Apollo 16 landing area, topography is rendered naturally (no vertical exaggeration) [NASA/GSFC/Ohio State University]",
 '2009-08-25',
 'M102064759C');
+
+
+CREATE INDEX idx_boundingbox_latlong ON BoundingBox(min_lat, max_lat, min_long, max_long);
+CREATE INDEX idx_images_filtering ON Images(
+    bounding_box_id,
+    Start_time,
+    Stop_time,
+    Emission_angle,
+    Incidence_angle,
+    Orbit_number,
+    Slew_angle,
+    Sub_solar_azimuth,
+    Sub_solar_latitude,
+    Sub_solar_longitude
+);
