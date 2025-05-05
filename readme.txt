@@ -50,3 +50,10 @@ The data.sql file reads from the csv -- PLEASE do this. The site really does nee
 The data.sql assumes that the data.csv file is at '/var/lib/mysql-files/data.csv'
 IF YOU ARE STORING IT SOMEWHERE ELSE PLEASE UPDATE THE PATH!! It is at the top of the data.sql file.
 Thank you & sorry for the hassle!
+
+
+Also we've been running our code with:
+
+mvn spring-boot:run -Dspring-boot.run.jvmArguments='-Dserver.port=8081'
+
+I'd recommend doing the same
