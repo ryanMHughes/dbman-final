@@ -1,1 +1,12 @@
-We securely store user passwords using the SCrypt password hashing algorithm (via Spring Security’s SCryptPasswordEncoder). SCrypt is a memory-hard, computationally intensive key derivation function designed to defend against brute-force and hardware-accelerated attacks. SCrypt automatically generates a unique, random salt for each password, which is embedded inside the resulting hash. Plaintext passwords are never stored. When a user registers or updates their password, the password is hashed using SCrypt before being saved to the database. During login, the plaintext password provided is hashed using the same SCrypt parameters and compared (using constant-time comparison) against the stored hash.nThe resulting hash string includes the salt, algorithm parameters, and hash, making it self-contained and secure for storage in the database. 
+We used SCrypt for storing passwords.
+
+Passwords are never stored as plaintext.
+SCrypt is a memory-hard, computationally intensive key derivation function designed to defend against brute-force and hardware-accelerated attacks. 
+This means it was built for security.
+SCrypt also automatically generates a unique, random salt for each password, which is embedded inside the resulting hash.
+This makes it even harder for attackers.
+Although its more memory intensive than BCrypt, it is safer. It is even safer than some SHA.
+
+The general idea for verification is that passwords are encoded, stored encoded, then when a 
+user needs to log in, the password they use to log in is then encoded and checked against the
+encoded string in the database.
