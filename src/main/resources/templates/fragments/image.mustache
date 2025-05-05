@@ -6,12 +6,12 @@
    <td><a href="{{url}}" target="_blank">{{url}}</a></td>
    <td>
         {{#addable}}
-            <button style="background-color: green; color: white;" onclick="event.stopPropagation(); window.location.href='/dataset/add/{{image_id}}'">
+            <button type="submit" style="background-color: green; color: white;" onclick="event.stopPropagation(); triggerAdd('{{image_id}}', this);">
                Add
             </button>
         {{/addable}}
         {{^addable}}
-            <button style="background-color: red; color: white;" onclick="event.stopPropagation();">
+            <button type="submit" style="background-color: red; color: white;" onclick="event.stopPropagation(); triggerRemove('{{image_id}}', this);">
                Remove
             </button>
         {{/addable}}

@@ -110,4 +110,5 @@ CREATE TABLE Dataset (
   image_id VARCHAR(40) NOT NULL,
   FOREIGN KEY (userId) REFERENCES user(userId),
   FOREIGN KEY (image_id) REFERENCES Images(image_id)
+  ADD CONSTRAINT unique_user_image UNIQUE (userId, image_id);
 )

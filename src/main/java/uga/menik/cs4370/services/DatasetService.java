@@ -33,7 +33,7 @@ public class DatasetService {
 
    public List<Image> getDataset() {
       User user = userService.getLoggedInUser();
-      String sql = "SELECT i.image_id, i.Pds_volume_name, i.Orbit_number, i.Start_time, i.url FROM Dataset d, Images i, Users u WHERE d.userId = ? AND i.image_id = d.image_id";
+      String sql = "SELECT i.image_id, i.Pds_volume_name, i.Orbit_number, i.Start_time, i.url FROM Dataset d, Images i WHERE d.userId = ? AND i.image_id = d.image_id";
       List<Image> images = new ArrayList<>();
 
       try (Connection conn = dataSource.getConnection();
@@ -63,24 +63,37 @@ public class DatasetService {
       return images;
    }
 
-   @GetMapping("/dataset/add/{imageId}")
    public void addToDataset(String imageId) {
       User user = userService.getLoggedInUser();
-      String sql = "INSERT INTO Dataset (userId, image_id) VALUES (?, ?)";
+
+      String checkSql = "SELECT 1 FROM Dataset WHERE userId = ? AND image_id = ?";
+      String insertSql = "INSERT INTO Dataset (userId, image_id) VALUES (?, ?)";
 
       try (Connection conn = dataSource.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
 
-         stmt.setString(1, user.userId);
-         stmt.setString(2, imageId);
-         stmt.executeUpdate();
+         checkStmt.setString(1, user.userId);
+         checkStmt.setString(2, imageId);
+
+         try (ResultSet rs = checkStmt.executeQuery()) {
+               if (rs.next()) {
+                  return;
+               }
+         }
+
+         // Entry does not exist → insert
+         try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
+               insertStmt.setString(1, user.userId);
+               insertStmt.setString(2, imageId);
+               insertStmt.executeUpdate();
+         }
 
       } catch (SQLException e) {
          e.printStackTrace();
       }
    }
+ 
 
-   @GetMapping("/dataset/remove/{imageId}")
    public void removeFromDataset(String imageId) {
       User user = userService.getLoggedInUser();
       String sql = "DELETE FROM Dataset WHERE userId = ? AND image_id = ?";
