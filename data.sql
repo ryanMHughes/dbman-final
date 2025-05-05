@@ -314,13 +314,7 @@ VALUES("Where Moscoviense meets the Highlands",
 'M103531461LC');
 
 INSERT INTO FeaturedImages(title, description, feature_date, image_id)
-VALUES("Aratus CA",
-"Subset of uncalibrated LROC NAC frame M104447576R showing Vallis Lorca, one of four lobes that make up Aratus CA in western Mare Serenitatis near the Montes Apennius. The Sun is shining from the lower left, image width is 1924 meters...",
-'2009-10-02',
-'M104447576RC');
-
-INSERT INTO FeaturedImages(title, description, feature_date, image_id)
-VALUES("Surveyor 1 - America’s first soft lunar landing",
+VALUES("America’s first soft lunar landing",
 "Surveyor 1 spacecraft sitting silently on Oceanus Procellarum, the first US spacecraft to land on another planet (June 2, 1966). The image was taken in the lunar afternoon such that the sun in low on the western horizon and the 3.3...",
 '2009-11-30',
 'M102443995LC');
@@ -384,12 +378,6 @@ VALUES("Recent impact!",
 "Very young impact crater in Balmer basin. The dark streamers are impact melt splashes thrown out during the crater formation, image 1302 meters wide [NASA/GSFC/Arizona State University]",
 '2009-08-31',
 'M104061987RC');
-
-INSERT INTO FeaturedImages(title, description, feature_date, image_id)
-VALUES("First LROC Stereo Results",
-"Synthetic perspective view looking south from the Apollo 16 landing area, topography is rendered naturally (no vertical exaggeration) [NASA/GSFC/Ohio State University]",
-'2009-08-25',
-'M102064759C');
 
 
 CREATE INDEX idx_boundingbox_latlong ON BoundingBox(min_lat, max_lat, min_long, max_long);

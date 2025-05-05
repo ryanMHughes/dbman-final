@@ -82,7 +82,7 @@ CREATE TABLE Images (
 
 CREATE TABLE FeaturedImages (
     featured_image_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title varchar(40) NOT NULL PRIMARY KEY,
+    title varchar(40) NOT NULL,
     description TEXT NOT NULL,
     feature_date DATE NOT NULL,
     image_id VARCHAR(40) NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE LandingSites (
 CREATE TABLE Dataset (
   userId INT NOT NULL,
   image_id VARCHAR(40) NOT NULL,
+  CONSTRAINT unique_user_image UNIQUE (userId, image_id),
   FOREIGN KEY (userId) REFERENCES user(userId),
   FOREIGN KEY (image_id) REFERENCES Images(image_id)
-  ADD CONSTRAINT unique_user_image UNIQUE (userId, image_id);
-)
+);
