@@ -30,18 +30,30 @@ Database Password : mysqlpass
 Test Username/Password Pairs
 
      1)
-	User:
-	Pswd:
+	User: pokerguy123
+	Pswd: pokerisfun
 
      2)
-	User:
-	Pswd:
+	User: thegoat12
+	Pswd: gopackgo
 
      3)
-	User:
-	Pswd:
+	User: overrated12
+	Pswd: notthegoat
 
 
+Instructions for running after making database
+
+1) Transfer data.csv -> /var/lib/mysql-files
+   I did this via the command docker cp data.csv ee420e9c2955:/var/lib/mysql-files/
+2) Transfer data.sql -> container
+   I did thi svia the command docker cp data.sql ee420e9c2955:/data.sql
+3) Transfer ddl.sql -> container
+   I did this via the command docker cp ddl.sql ee420e9c2955:/ddl.sql
+4) Run command source ddl.sql
+5) Run command source data.sql
+
+Now ready to compile and connect to web app, see below
 
 For the grader:
 
